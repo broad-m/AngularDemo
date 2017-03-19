@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body {
+            margin: 0;
+            padding:0;
+            height: 100%;
+            width: 100%;
+        }
+        body {
+            height:101%;
+        }
+
+        #demo {
+            padding: 10px;
+            border: 5px solid aqua;
+            margin: 20px;
+            font-size: 2em;
+        }
+    </style>
+    <script src="../lib/qrcode/jquery.min.js"></script>
+
+</head>
+<body>
+<div id="demo">
+    你好啊
+</div>
+
+<script>
+    $(function () {
+        var demo = $('#demo');
+
+        var height = demo.height();
+        var innerHeight = demo.innerHeight();
+        var outerHeight = demo.outerHeight();
+        var outerHeightTrue = demo.outerHeight(true);
+
+        var ele1 = $('<p>height=' + height + '</p>');
+        var ele2 = $('<p>innerHeight=' + innerHeight + '</p>');
+        var ele3 = $('<p>outerHeight=' + outerHeight + '</p>');
+        var ele4 = $('<p>outerHeightTrue=' + outerHeightTrue + '</p>');
+        $(document.body).append(ele1).append(ele2).append(ele3).append(ele4);
+
+
+
+    });
+    window.onscroll = function () {
+//        debugger
+        var st1=document.documentElement.scrollTop;
+        var st2=document.body.scrollTop;
+
+        var sh1= document.documentElement.scrollHeight;
+        var sh2= document.body.scrollHeight;
+        var scrollTop = Math.max(st1, st2);
+        console.log('scrollTop',st1, st2,'scrollHeight',sh1,sh2);
+        if (scrollTop + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
+            console.log('is bottom');
+        }
+    }
+
+</script>
+</body>
+</html>

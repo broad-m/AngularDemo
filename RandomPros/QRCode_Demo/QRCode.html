@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .yellow{
+            color: #e7ff00;
+        }
+    </style>
+    <script src="../lib/qrcode/jquery.min.js"></script>
+    <script src="../lib/qrcode/qrcode.js"></script>
+</head>
+<body>
+<div id="qrcode"></div>
+<button onclick="download()">download</button>
+<script type="text/javascript">
+//    new QRCode(document.getElementById("qrcode"), "http://jindo.dev.naver.com/collie");
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+    text: "http://www.lqwawa.com",
+    width: 128,
+    height: 128,
+    colorDark : "#000000",
+    colorLight : "#ffffff",
+    correctLevel : QRCode.CorrectLevel.H,
+    class:'canvasClass'
+});
+//保存到本地
+
+function download() {
+    debugger
+    //转成Base64编码格式
+    var canvasImgUrl = $("#qrcode").find("canvas")[0].toDataURL("image/png");
+    var image = canvasImgUrl.replace("image/png", "image/octet-stream");
+    saveQRCodePng(image, "二维码.png");
+}
+
+
+
+
+
+
+function saveQRCodePng(canvasImgUrl, filename) {
+
+    debugger
+    var ua = navigator.userAgent.toLowerCase(), s;
+    var isIE = (s = ua.match(/(msie\s|trident.*rv:)([\d.]+)/)) ? parseInt(s[2]) : false; //判断是否IE浏览器
+    if (isIE) {
+        if (window.atob) {
+            //IE10、IE11
+            var blob = convertBase64UrlToBlob(canvasImgUrl);
+            navigator.msSaveBlob(blob, filename);
+        } else {
+            //IE9
+            var w = window.open('about:blank', "new_win");
+            w.document.write("<img src=" + canvasImgUrl + ">");
+            w.document.title = "二维码.png";
+        }
+    }
+    else {
+        var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
+        save_link.href = canvasImgUrl;
+        save_link.download = filename;
+
+        var event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        save_link.dispatchEvent(event);
+    }
+}
+</script>
+
+
+</body>
+</html>

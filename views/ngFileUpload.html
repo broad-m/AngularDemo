@@ -1,0 +1,44 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Upload on form submit</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <form name="myForm">
+            <fieldset>
+                <label class="btn btn-default" for="fileUploadInput">选择文件</label>
+                <br>Photo:
+                <!--上传-->
+                <input type="file"
+                       class="hidden"
+                       id="fileUploadInput"
+                       ngf-select
+                       ng-model="picFile"
+                       name="file"
+                       ngf-max-size="2MB"
+                       required
+                       ngf-model-invalid="errorFile">
+
+
+                <i ng-show="myForm.file.$error.required">*required</i><br>
+                <i ng-show="myForm.file.$error.maxSize">File too large
+                    {{errorFile.size / (1024*1024)|number:1}}MB: max 2M</i>
+                <img ng-show="picFile && myForm.file.$valid" ngf-thumbnail="picFile" class="thumb" width="100">
+                <!--删除-->
+                <div ng-click="picFile = null" ng-show="picFile" class="btn btn-danger">Remove</div>
+                <br>
+                <button ng-disabled="!myForm.$valid" ng-click="uploadPic(picFile)" class="btn btn-info">Submit</button>
+                <span class="progress" ng-show="picFile.progress >= 0">
+                    <div style="width:{{picFile.progress}}%" ng-bind="picFile.progress + '%'"></div>
+                </span>
+                <span ng-show="picFile.result">Upload Successful</span>
+                <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+            </fieldset>
+            <br>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <!--<button class="btn btn-primary" type="button" ng-click="vm.ok()">OK</button>-->
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
+

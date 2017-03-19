@@ -1,0 +1,29 @@
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    font-weight: bold;
+}
+fieldset.bordered{
+    border:1px dashed #c1d2cf;
+    padding:10px 5px;
+    margin-top:-8px;
+    border-radius: 3%;
+
+}
+fieldset.bordered > legend{
+    width:auto;
+    border: none;
+    color: #4c904e;
+}
+.list-group .label{
+    padding-top:.3em;
+    margin: 1em;
+}
+.pointer{
+    cursor: pointer;
+}
+.label.pull-right{
+    margin: 0;
+}
+
+.padding-15-lr{
+    padding: 0 15px;
+}
