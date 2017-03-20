@@ -15,7 +15,7 @@
             'snap.svg':['lib/angular/Snap.svg/dist/snap.svg-min'],
             "ui.router": ["lib/angular/angular-ui-router"],
             "ui.bootstrap": ["lib/angular/ui-bootstrap-tpls-2.5.0.min"],
-            "ocLazyLoad": ["lib/angular/ocLazyLoad/ocLazyLoad.require.min"],
+            "ocLazyLoad": ["lib/angular/ocLazyLoad/ocLazyLoad.require"],
             'app':['scripts/app']
         },
         shim: {
@@ -32,7 +32,7 @@
         }
     });
 
-    require(['scripts/app']);
+    require(['app']);
 
 })();
 

@@ -4,11 +4,13 @@ define(['angular'], function (angular) {
 		.module('MainApp')
 		.controller('MainController', MainController);
 
-	MainController.$inject = ['$scope', '$ocLazyLoad', '$uibModal', '$timeout', '$http'];
+	MainController.$inject = ['$scope', '$ocLazyLoad', '$uibModal', '$timeout', '$http','Noonger'];
 
 	return MainController;
 
-	function MainController($scope, $ocLazyLoad, $uibModal, $timeout, $http) {
+	function MainController($scope, $ocLazyLoad, $uibModal, $timeout, $http,Noonger) {
+		
+		console.log(Noonger);
 
 		$scope.controllerName = "MainController";
 		$scope.file = null;
@@ -134,12 +136,7 @@ define(['angular'], function (angular) {
 
 
 		vm.injectDemo = function () {
-
-
 			var $injector = angular.injector(['ng', 'MainApp']);
-
-
-
 			function explicit(UserInfoFactory) {
 				console.log(UserInfoFactory);
 			}
@@ -151,8 +148,6 @@ define(['angular'], function (angular) {
 				$injector.invoke(explicit);
 				console.log($injector.annotate(explicit));
 			}
-
-
 		};
 
 

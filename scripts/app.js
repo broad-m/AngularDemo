@@ -1,15 +1,63 @@
-define(["angular", "ui.router", 'ocLazyLoad','ngAnimate','ngTouch','ui.bootstrap'], function (angular) {
+define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootstrap'], function (angular) {
 
-    var app = angular.module('MainApp', ['ui.router', 'oc.lazyLoad','ngAnimate','ngTouch','ui.bootstrap']);
+    var app = angular.module('MainApp', ['ui.router', 'oc.lazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootstrap']);
 
     app.config(Config);
+    app.constant('ocLazyLoadModules', {
+        modules: [
+            {
+                name: 'AboutController',
+                files: ['scripts/controllers/AboutController.js']
+            },
+            {
+                name: 'MainController',
+                files: ['scripts/controllers/MainController.js']
+            },
+            {
+                name: 'MessageController',
+                files: ['scripts/controllers/MessageController.js']
+            },
+            {
+                name: 'ProfileController',
+                files: ['scripts/controllers/ProfileController.js']
+            },
+            {
+                name: 'ui.bootstrap',
+                files: ['lib/angular/ui-bootstrap-tpls-2.5.0.min.js']
+            },
+            {
+                name: 'ngAnimate',
+                files: ['//cdn.bootcss.com/angular.js/1.5.11/angular-animate.min.js']
+            },
+            {
+                name: 'ngTouch',
+                files: ['//cdn.bootcss.com/angular.js/1.5.11/angular-touch.min.js']
+            },
+            {
+                name: 'ngFileUpload',
+                files: ['lib/angular/ng-file-upload/ng-file-upload-all.min.js']
+            }
+
+        ]
+    });
     app.run(Run);
-	app.factory('UserInfoFactory', function () {
-		return{
-			username:'tom',
-			age:24
-		}
-	});
+    app.factory('UserInfoFactory', function () {
+        return {
+            username: 'tom',
+            age: 24
+        }
+    });
+    app.provider('Noonger', function () {
+        this.$get = function() {
+            return{
+                username:'noonger'
+            }
+        };
+    });
+    app.decorator('Noonger', function ($delegate) {
+        $delegate.age=24;
+        return $delegate;
+    });
 
 
     //Run
@@ -37,46 +85,13 @@ define(["angular", "ui.router", 'ocLazyLoad','ngAnimate','ngTouch','ui.bootstrap
 
 
     //Router Config
-    Config.$inject = ["$stateProvider", "$urlRouterProvider", '$ocLazyLoadProvider'];
-    function Config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider) {
+    Config.$inject = ["$stateProvider", "$urlRouterProvider", '$ocLazyLoadProvider', 'ocLazyLoadModules'];
+    function Config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ocLazyLoadModules) {
+
 
         $ocLazyLoadProvider.config({
-            debug: false,
-            modules: [
-                {
-                    name: 'AboutController',
-                    files: ['scripts/controllers/AboutController.js']
-                },
-                {
-                    name: 'MainController',
-                    files: ['scripts/controllers/MainController.js']
-                },
-                {
-                    name: 'MessageController',
-                    files: ['scripts/controllers/MessageController.js']
-                },
-                {
-                    name: 'ProfileController',
-                    files: ['scripts/controllers/ProfileController.js']
-                },
-                {
-                    name: 'ui.bootstrap',
-                    files: ['lib/angular/ui-bootstrap-tpls-2.5.0.min.js']
-                },
-                {
-                    name: 'ngAnimate',
-                    files: ['//cdn.bootcss.com/angular.js/1.5.11/angular-animate.min.js']
-                },
-                {
-                    name: 'ngTouch',
-                    files: ['//cdn.bootcss.com/angular.js/1.5.11/angular-touch.min.js']
-                },
-                {
-                    name: 'ngFileUpload',
-                    files: ['lib/angular/ng-file-upload/ng-file-upload-all.min.js']
-                }
-
-            ]
+            debug: true,
+            modules: ocLazyLoadModules.modules
         });
 
         $stateProvider
@@ -142,10 +157,10 @@ define(["angular", "ui.router", 'ocLazyLoad','ngAnimate','ngTouch','ui.bootstrap
 
 
     //手动启动angular
-	angular.element(document).ready(function () {
-		angular.bootstrap(window.document, ['MainApp']);
-		angular.element(document).find('html').attr('ng-app','MainApp');
-	});
+    angular.element(document).ready(function () {
+        angular.bootstrap(window.document, ['MainApp']);
+        angular.element(document).find('html').attr('ng-app', 'MainApp');
+    });
 
 
 });
