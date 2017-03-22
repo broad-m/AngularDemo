@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="btn btn-default" ng-click="vm.showLineChart()">showLineChart</div>
+        <div class="btn btn-default" ng-click="vm.showBarChart()">showBarChart</div>
+        <div class="btn btn-default" ng-click="vm.showHorizontalBar()">showHorizontalBar</div>
+        <div class="btn btn-default" ng-click="vm.showPieChart()">showPieChart</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-4">
+        <canvas id="line" class="chart chart-line"
+                chart-data="vm.lineChart.data"
+                ng-cloak
+                ng-show="vm.lineChart.chartDataInit"
+                chart-labels="vm.lineChart.labels"
+                chart-series="vm.lineChart.series"
+                chart-options="vm.lineChart.options"
+                chart-dataset-override="vm.lineChart.datasetOverride"
+                chart-click="vm.lineChart.onClick">
+        </canvas>
+    </div>
+    <div class="col-xs-4">
+        <canvas id="bar" class="chart chart-bar"
+                chart-data="vm.barChart.data"
+                chart-series="vm.barChart.series"
+                chart-labels="vm.barChart.labels">
+        </canvas>
+    </div>
+    <div class="col-xs-4">
+        <canvas id="base"
+                class="chart-horizontal-bar"
+                chart-data="vm.horizontalChart.data"
+                chart-labels="vm.horizontalChart.labels" >
+        </canvas>
+    </div>
+    <div class="col-xs-4">
+        <canvas id="pie" class="chart chart-pie"
+                chart-data="vm.pieChart.data"
+                chart-labels="vm.pieChart.labels"
+                chart-options="vm.pieChart.options">
+        </canvas>
+    </div>
+</div>
+
