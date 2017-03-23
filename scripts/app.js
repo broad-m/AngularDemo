@@ -3,6 +3,7 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
     var app = angular.module('MainApp', ['ui.router', 'oc.lazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootstrap']);
 
     app.config(Config);
+	app.config(RegisterConfig);
     app.constant('ocLazyLoadModules', {
         modules: [
             {
@@ -47,14 +48,14 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
             age: 24
         }
     });
-    app.provider('Noonger', function () {
+    app.provider('UserInfo', function () {
         this.$get = function() {
             return{
                 username:'noonger'
             }
         };
     });
-    app.decorator('Noonger', function ($delegate) {
+    app.decorator('UserInfo', function ($delegate) {
         $delegate.age=24;
         return $delegate;
     });
@@ -83,11 +84,22 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 
     }
 
+	//RegisterConfig
+	RegisterConfig.$inject=['$controllerProvider','$compileProvider','$filterProvider','$provide'];
+	function RegisterConfig($controllerProvider, $compileProvider, $filterProvider, $provide) {
+		app.register = {
+			controller: $controllerProvider.register,
+			directive: $compileProvider.directive,
+			filter: $filterProvider.register,
+			factory: $provide.factory,
+			service: $provide.service
+		};
+	}
+
 
     //Router Config
     Config.$inject = ["$stateProvider", "$urlRouterProvider", '$ocLazyLoadProvider', 'ocLazyLoadModules'];
     function Config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ocLazyLoadModules) {
-
 
         $ocLazyLoadProvider.config({
             debug: true,

@@ -4,13 +4,11 @@ define(['angular'], function (angular) {
 		.module('MainApp')
 		.controller('MainController', MainController);
 
-	MainController.$inject = ['$scope', '$ocLazyLoad', '$uibModal', '$timeout', '$http','Noonger'];
+	MainController.$inject = ['$scope', '$ocLazyLoad', '$uibModal', '$timeout', '$http'];
 
 	return MainController;
 
-	function MainController($scope, $ocLazyLoad, $uibModal, $timeout, $http,Noonger) {
-		
-		console.log(Noonger);
+	function MainController($scope, $ocLazyLoad, $uibModal, $timeout, $http) {
 
 		$scope.controllerName = "MainController";
 		$scope.file = null;
@@ -60,13 +58,11 @@ define(['angular'], function (angular) {
 
 
 		};
-
 		vm.loadNgFileUpload = function () {
 			$ocLazyLoad.load('ngFileUpload').then(function () {
 
 			});
 		};
-
 		vm.upload = function (file, Upload) {
 			//if(!file){return false;}
 			file = file || {};
@@ -89,7 +85,6 @@ define(['angular'], function (angular) {
 				file.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
 			});
 		};
-
 		vm.startUpload = function (event) {
 			event.preventDefault();
 
@@ -124,8 +119,6 @@ define(['angular'], function (angular) {
 
 
 		};
-
-
 		vm.localPostDemo = function () {
 			$http.post('/WebApp/Upload/FileUpload', {username: 'tom', age: 24}).then(function (obj) {
 				console.log(obj);
@@ -133,22 +126,77 @@ define(['angular'], function (angular) {
 				console.log('err', error);
 			})
 		}
-
-
 		vm.injectDemo = function () {
+
 			var $injector = angular.injector(['ng', 'MainApp']);
+
+			explicit.$inject = ['UserInfoFactory'];
 			function explicit(UserInfoFactory) {
 				console.log(UserInfoFactory);
 			}
-
-			explicit.$inject = ['UserInfoFactory'];
-
-			var hasUserInfoFactory = $injector.has('UserInfoFactory');
-			if (hasUserInfoFactory) {
+			if ($injector.has('UserInfoFactory')) {
 				$injector.invoke(explicit);
-				console.log($injector.annotate(explicit));
+			}
+			if($injector.has('$q')){
+				var $q=$injector.get('$q');
+				var defer=$q.defer();
+				var promise=defer.promise;
+				promise.then(function (data) {
+					console.log(data);
+				}, function (error) {
+					console.log(error);
+				});
+				setTimeout(function(){
+					defer.reject({error:'something errors'});
+					//defer.resolve('resolved data');
+				},1200);
 			}
 		};
+		vm.dynamicCompile= function () {
+
+			//delay inject a controller manually
+			var app = angular.module('MainApp');
+			app.register.controller('DynamicController', function ($scope) {
+				$scope.controllerName='DynamicController';
+			});
+
+
+			var $div = $('<div ng-controller="DynamicController">123 <hr>{{controllerName}}</div>');
+			$('#containerBox').append($div);
+
+			angular.element(document).injector().invoke(function($compile) {
+				var scope = angular.element($div).scope();
+				$compile($div)(scope);
+			});
+
+		};
+		vm.promiseDemo= function () {
+			var $injector = angular.injector(['ng', 'MainApp']);
+
+			if($injector.has('$q') && $injector.has('$http')){
+				var $q=$injector.get('$q'),
+					$http=$injector.get('$http');
+
+				var p1=$http.get('data/test.json',{params:{a:1}});
+				var p2=$http.get('data/test1.json',{params:{a:2}});
+				var all =$q.all([p1,p2]);
+
+				all.then(function (data) {
+					console.log(data);
+				}, function (error) {
+					console.log(error);
+				});
+
+				var p = $q.when(p1, function(data){return data},
+					function(data){return data});
+				p.then(
+					function(data){console.log(data)},
+					function(data){console.log('error, ' + data)}
+				);
+			}
+		}
+
+
 
 
 	}
