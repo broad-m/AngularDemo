@@ -11,6 +11,10 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
                 files: ['scripts/controllers/AboutController.js']
             },
             {
+                name: 'ChartController',
+                files: ['scripts/controllers/ChartController.js']
+            },
+            {
                 name: 'MainController',
                 files: ['scripts/controllers/MainController.js']
             },
@@ -37,6 +41,14 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
             {
                 name: 'ngFileUpload',
                 files: ['lib/angular/ng-file-upload/ng-file-upload-all.min.js']
+            },
+            {
+                name: 'angularChart',
+                files: ['lib/angular/angular-chart/angular-chart.js']
+            },
+            {
+                name: 'chart',
+                files: ['lib/chart.js/Chart.js']
             }
 
         ]
@@ -162,6 +174,17 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
                     }
                 },
                 controller: 'AboutController',
+                controllerAs: "vm"
+            })
+            .state("app.chart", {
+                url: ".chart",
+                templateUrl: "/AngularDemo/views/chart.html",
+                resolve: {
+                    AboutController: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load('ChartController');
+                    }
+                },
+                controller: 'ChartController',
                 controllerAs: "vm"
             });
         $urlRouterProvider.otherwise("/app.main");

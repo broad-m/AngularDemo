@@ -16,13 +16,16 @@
             "ui.router": ["lib/angular/angular-ui-router"],
             "ui.bootstrap": ["lib/angular/ui-bootstrap-tpls-2.5.0.min"],
             "ocLazyLoad": ["lib/angular/ocLazyLoad/ocLazyLoad.require"],
-            'app':['scripts/app']
+            'app':['scripts/app'],
+            'chart':['lib/chart.js/Chart'],
+            'angularChart':['lib/angular/angular-chart/angular-chart']
         },
         shim: {
             'particleground':['jquery'],
             'angular':{
                 exports:'angular'
             },
+            'angularChart':['angular','chart'],
             'ngAnimate':['angular'],
             'ngTouch':['angular'],
             'ocLazyLoad':['angular'],
