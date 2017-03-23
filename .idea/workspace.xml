@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="80dde9d5-36d6-4456-b1d8-b8e6a305c909" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/angular/angular-chart/angular-chart.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/angular/angular-chart/angular-chart.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/angular/angular-chart/angular-chart.min.js.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/chart.js/Chart.bundle.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/chart.js/Chart.bundle.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/chart.js/Chart.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/chart.js/Chart.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/controllers/ChartController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/chart.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/charts/lineChart.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/app.js" afterPath="$PROJECT_DIR$/scripts/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/controllers/AboutController.js" afterPath="$PROJECT_DIR$/scripts/controllers/AboutController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/require.main.js" afterPath="$PROJECT_DIR$/scripts/require.main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/about.html" afterPath="$PROJECT_DIR$/views/about.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/app.html" afterPath="$PROJECT_DIR$/views/app.html" />
-    </list>
+    <list default="true" id="80dde9d5-36d6-4456-b1d8-b8e6a305c909" name="Default" comment="" />
     <ignored path="AngularDemo.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +24,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33734939">
-              <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.45180723">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -162,6 +145,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="AngularDemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AngularDemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AngularDemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AngularDemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="AngularDemo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -796,8 +811,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33734939">
-          <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.45180723">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
