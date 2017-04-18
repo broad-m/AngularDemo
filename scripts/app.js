@@ -27,6 +27,10 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
                 files: ['scripts/controllers/ProfileController.js']
             },
             {
+                name: 'TreeController',
+                files: ['scripts/controllers/TreeController.js']
+            },
+            {
                 name: 'ui.bootstrap',
                 files: ['lib/angular/ui-bootstrap-tpls-2.5.0.min.js']
             },
@@ -49,6 +53,10 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
             {
                 name: 'chart',
                 files: ['lib/chart.js/Chart.js']
+            },
+            {
+                name: 'GenerateOutlineCatalogTree',
+                files: ['scripts/Services/GenerateOutlineCatalogTree.js']
             }
 
         ]
@@ -180,11 +188,22 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
                 url: ".chart",
                 templateUrl: "/AngularDemo/views/chart.html",
                 resolve: {
-                    AboutController: function ($ocLazyLoad) {
+                    ChartController: function ($ocLazyLoad) {
                         return $ocLazyLoad.load('ChartController');
                     }
                 },
                 controller: 'ChartController',
+                controllerAs: "vm"
+            })
+            .state("app.tree", {
+                url: ".tree",
+                templateUrl: "/AngularDemo/views/tree.html",
+                resolve: {
+	                TreeController: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load('TreeController');
+                    }
+                },
+                controller: 'TreeController',
                 controllerAs: "vm"
             });
         $urlRouterProvider.otherwise("/app.main");

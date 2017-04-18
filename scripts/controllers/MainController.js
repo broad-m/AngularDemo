@@ -58,17 +58,18 @@ define(['angular'], function (angular) {
 
 
 		};
-		vm.loadNgFileUpload = function () {
-			$ocLazyLoad.load('ngFileUpload').then(function () {
-
-			});
-		};
+		vm.loadNgFileUpload = function () {};
 		vm.upload = function (file, Upload) {
-			//if(!file){return false;}
-			file = file || {};
+
+			if(!file){return false;}
+
 			file.upload = Upload.upload({
-				url: '/WebApp/Upload/FileUpload',
-				data: {username: 'tom', file: file},
+
+				url: 'http://noonger.my71.com/Api/UploadMaterial',
+				method: 'POST',
+				data: {username: 'tom',file: file,"Content-Type": file.type != '' ? file.type : 'application/octet-stream'},
+				headers:{},
+				withCredentials:true
 			});
 
 			file.upload.then(function (response) {
