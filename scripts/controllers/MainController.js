@@ -4,8 +4,8 @@ define(['angular'], function (angular) {
 		.module('MainApp')
 		.controller('MainController', MainController);
 
-	MainController.$inject = ['$scope', '$ocLazyLoad', '$uibModal', '$injector', '$http'];
-	function MainController($scope, $ocLazyLoad, $uibModal, $injector, $http) {
+	MainController.$inject = ['$scope', '$ocLazyLoad', '$uibModal', '$injector', '$compile'];
+	function MainController($scope, $ocLazyLoad, $uibModal, $injector, $compile) {
 
 		$scope.controllerName = "MainController";
 
@@ -26,8 +26,10 @@ define(['angular'], function (angular) {
 		}
 
 		vm.lazyLoadDirective= function () {
-			$ocLazyLoad.load('').then(function () {
-
+			$ocLazyLoad.load('clickToChangeColorDirective').then(function () {
+				var appendEle = angular.element('<p click-to-change-color="blue">dynamic directives</p>');
+				var fatherNode = document.getElementById('TestSection');
+				angular.element(fatherNode).append($compile(appendEle)($scope));
 			});
 		};
 

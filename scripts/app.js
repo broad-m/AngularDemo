@@ -24,6 +24,12 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 				files: ['scripts/controllers/TreeController.js']
 			}
 		];
+		var directives=[
+			{
+				name: 'clickToChangeColorDirective',
+				files: ['scripts/directives/clickToChangeColor.js']
+			}
+		];
 		var modules=[
 			{
 				name: 'ui.bootstrap',
@@ -56,7 +62,7 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 				files: ['scripts/Services/GenerateOutlineCatalogTree.js']
 			}
 		];
-		return controllers.concat(modules,services);
+		return controllers.concat(directives,modules,services);
 	}()));
 
 	app.run(['$rootScope', function ($rootScope) {

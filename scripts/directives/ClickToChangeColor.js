@@ -8,12 +8,12 @@ define(['angular'], function (angular) {
 		return{
 			replace:false,
 			scope:{
-
+				color:'@clickToChangeColor'
 			},
 			link: function (scope, ele, attrs, controller) {
 
 				ele.bind('click', function () {
-					ele.css('color','red');
+					ele.css('color',scope.color || 'red');
 				});
 			}
 		}
