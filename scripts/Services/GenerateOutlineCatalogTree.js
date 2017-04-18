@@ -1,10 +1,10 @@
-define(['angular', 'require'], function (angular, require) {
+define(['angular'], function (angular) {
 
 	angular
 		.module('MainApp')
 		.service('GenerateOutlineCatalogTree', GenerateOutlineCatalogTree);
 
-	//GenerateOutlineCatalogTree.$inject = ['$rootScope'];
+	GenerateOutlineCatalogTree.$inject = [];
 	function GenerateOutlineCatalogTree() {
 
 		return {

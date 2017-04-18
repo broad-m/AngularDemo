@@ -48,34 +48,9 @@
         </div>
     </div>
     <div class="col-xs-4">
-        <div class="btn btn-default" ng-click="vm.openModal()">loadUiBootstrap</div>
-        <div class="btn btn-default" ng-click="vm.localPostDemo()">localPostDemo</div>
-        <div class="btn btn-default" ng-show="vm.userInfo" ng-click="vm.userInfo=null">
-            {{ vm.userInfo.name }} | {{ vm.userInfo.age }}
-        </div>
-
-
-        <section about="ng-file-upload">
-            <hr>
-            <form>
-                <div class="btn btn-default" ng-click="vm.loadNgFileUpload()">loadNgFileUpload</div>
-                <label for="fileUpload" class="btn btn-default">ngFileUpload</label>
-                <input type="file" id="fileUpload" class="hidden">
-                <input  value="弹窗上传" type="submit" ng-click="vm.startUpload($event,this)" class="btn btn-default">
-            </form>
-        </section>
-
-        <section about="$injector + dynamicCompile">
-            <hr>
-            <div class="btn btn-default" ng-click="vm.injectDemo()">$injector测试</div>
-            <div class="btn btn-default" ng-click="vm.dynamicCompile()">dynamicCompile</div>
-            <div class="btn btn-default" ng-click="vm.promiseDemo()">promiseDemo</div>
-        </section>
-
         <section about="">
             <hr>
-
+            <button class="btn btn-default" ng-click="vm.lazyLoadService()">lazyLoadService</button>
         </section>
-
     </div>
 </div>
