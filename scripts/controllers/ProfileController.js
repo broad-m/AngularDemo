@@ -13,7 +13,22 @@ define(['angular'], function (angular) {
         $scope.controllerName="ProfileController";
 
         var vm=this;
-        vm.controllerName="ProfileController";
+
+        require(['jquery','jquery.form'], function ($) {
+
+            $(function () {
+                var form = $('#jqueryFormDemo');
+                $('#submitBtn').click(function () {
+                    form.ajaxSubmit();
+                    return false;
+                });
+
+
+            });
+
+        });
+
+
     }
 
 })

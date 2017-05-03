@@ -6,6 +6,7 @@
         baseUrl: "/AngularDemo/",
         paths: {
             "jquery": ["//cdn.bootcss.com/jquery/1.12.4/jquery.min"],
+            "jquery.form": ["//cdn.bootcss.com/jquery.form/4.2.1/jquery.form.min"],
             'particleground':['lib/particleground/jquery.particleground.min'],
             'perfectScrollbar':['lib/perfect-scrollbar/js/perfect-scrollbar.min'],
             "angular": ["//cdn.bootcss.com/angular.js/1.5.11/angular.min"],
@@ -21,6 +22,7 @@
             'angularChart':['lib/angular/angular-chart/angular-chart']
         },
         shim: {
+            'jquery.form':['jquery'],
             'particleground':['jquery'],
             'angular':{
                 exports:'angular'
