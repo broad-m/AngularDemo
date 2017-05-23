@@ -22,6 +22,9 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 			}, {
 				name: 'TreeController',
 				files: ['scripts/controllers/TreeController.js']
+			}, {
+				name: 'VueController',
+				files: ['scripts/controllers/VueController.js']
 			}
 		];
 		var directives=[
@@ -174,6 +177,17 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 				},
 				controller: 'TreeController',
 				controllerAs: "vm"
+			})
+			.state("app.vue", {
+				url: ".vue",
+				templateUrl: "/AngularDemo/views/vue.html",
+				resolve: {
+                    VueController: function ($ocLazyLoad) {
+						return $ocLazyLoad.load('VueController');
+					}
+				},
+				controller: 'VueController',
+				controllerAs: "vm"
 			});
 		$urlRouterProvider.otherwise("/app.main");
 	}
@@ -181,7 +195,7 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 
 	//手动启动angular
 	angular.element(document).ready(function () {
-		angular.bootstrap(window.document, ['MainApp']);
+		angular.bootstrap(document, ['MainApp']);
 		angular.element(document).find('html').attr('ng-app', 'MainApp');
 	});
 

@@ -5,7 +5,9 @@ define(['angular'], function (angular) {
 		.directive('clickToChangeColor',clickToChangeColor);
 
 	function clickToChangeColor() {
+
 		return{
+			restrict:'A',
 			replace:false,
 			scope:{
 				color:'@clickToChangeColor'
@@ -17,6 +19,7 @@ define(['angular'], function (angular) {
 				});
 			}
 		}
+		
 	}
 
 })

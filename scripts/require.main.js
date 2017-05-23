@@ -3,7 +3,7 @@
     "use strict";
 
     require.config({
-        baseUrl: "/AngularDemo/",
+        baseUrl: "./",
         paths: {
             "jquery": ["//cdn.bootcss.com/jquery/1.12.4/jquery.min"],
             "jquery.form": ["//cdn.bootcss.com/jquery.form/4.2.1/jquery.form.min"],
@@ -19,7 +19,8 @@
             "ocLazyLoad": ["lib/angular/ocLazyLoad/ocLazyLoad.require"],
             'app':['scripts/app'],
             'chart':['lib/chart.js/Chart'],
-            'angularChart':['lib/angular/angular-chart/angular-chart']
+            'angularChart':['lib/angular/angular-chart/angular-chart'],
+            'vue':['lib/vue/vue.min']
         },
         shim: {
             'jquery.form':['jquery'],
@@ -27,6 +28,7 @@
             'angular':{
                 exports:'angular'
             },
+            'vue':{exports:'Vue'},
             'angularChart':['angular','chart'],
             'ngAnimate':['angular'],
             'ngTouch':['angular'],
