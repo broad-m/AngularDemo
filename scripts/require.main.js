@@ -5,13 +5,13 @@
     require.config({
         baseUrl: "./",
         paths: {
-            "jquery": ["//cdn.bootcss.com/jquery/1.12.4/jquery.min"],
+            "jquery": ["lib/jquery/jquery.1.12.4.min"],
             "jquery.form": ["//cdn.bootcss.com/jquery.form/4.2.1/jquery.form.min"],
             'particleground':['lib/particleground/jquery.particleground.min'],
             'perfectScrollbar':['lib/perfect-scrollbar/js/perfect-scrollbar.min'],
-            "angular": ["//cdn.bootcss.com/angular.js/1.5.11/angular.min"],
-            "ngAnimate":["//cdn.bootcss.com/angular.js/1.5.11/angular-animate.min"],
-            "ngTouch":["//cdn.bootcss.com/angular.js/1.5.11/angular-touch.min"],
+            "angular": ["lib/angular/angular.1.5.11.min"],
+            "ngAnimate":["lib/angular/angular-animate.min"],
+            "ngTouch":["lib/angular/angular-touch.min"],
             'me-pageloading':['lib/angular/me-pageloading/me-pageloading.min'],
             'snap.svg':['lib/angular/Snap.svg/dist/snap.svg-min'],
             "ui.router": ["lib/angular/angular-ui-router"],
@@ -20,7 +20,11 @@
             'app':['scripts/app'],
             'chart':['lib/chart.js/Chart'],
             'angularChart':['lib/angular/angular-chart/angular-chart'],
-            'vue':['lib/vue/vue.min']
+            'vue':['lib/vue/vue.min'],
+            'createjs':['lib/createjs/easeljs-0.8.2.min'],
+            'tweenjs':['lib/createjs/tweenjs-0.6.2.min'],
+            'preloadjs':['lib/createjs/preloadjs-0.6.2.min'],
+            'soundjs':['lib/createjs/soundjs-0.6.2.min'],
         },
         shim: {
             'jquery.form':['jquery'],
@@ -28,6 +32,12 @@
             'angular':{
                 exports:'angular'
             },
+            'createjs':{
+                exports:'createjs'
+            },
+            'tweenjs':['createjs'],
+            'preloadjs':['createjs'],
+            'soundjs':['createjs'],
             'vue':{exports:'Vue'},
             'angularChart':['angular','chart'],
             'ngAnimate':['angular'],

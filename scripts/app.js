@@ -23,8 +23,8 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 				name: 'TreeController',
 				files: ['scripts/controllers/TreeController.js']
 			}, {
-				name: 'VueController',
-				files: ['scripts/controllers/VueController.js']
+				name: 'CreateJsController',
+				files: ['scripts/controllers/CreateJsController.js']
 			}
 		];
 		var directives=[
@@ -178,15 +178,15 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 				controller: 'TreeController',
 				controllerAs: "vm"
 			})
-			.state("app.vue", {
-				url: ".vue",
-				templateUrl: "/AngularDemo/views/vue.html",
+			.state("app.createJs", {
+				url: ".createJs",
+				templateUrl: "/AngularDemo/views/createJs.html",
 				resolve: {
                     VueController: function ($ocLazyLoad) {
-						return $ocLazyLoad.load('VueController');
+						return $ocLazyLoad.load('CreateJsController');
 					}
 				},
-				controller: 'VueController',
+				controller: 'CreateJsController',
 				controllerAs: "vm"
 			});
 		$urlRouterProvider.otherwise("/app.main");
