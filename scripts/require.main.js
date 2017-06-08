@@ -25,6 +25,7 @@
             'tweenjs':['lib/createjs/tweenjs-0.6.2.min'],
             'preloadjs':['lib/createjs/preloadjs-0.6.2.min'],
             'soundjs':['lib/createjs/soundjs-0.6.2.min'],
+            'Utility':['scripts/common/utility']
         },
         shim: {
             'jquery.form':['jquery'],

@@ -1,5 +1,7 @@
 define(['angular'], function (angular) {
 
+
+
     angular
         .module('MainApp')
         .controller('CreateJsController', CreateJsController);
@@ -14,7 +16,9 @@ define(['angular'], function (angular) {
         vm.loadCreateJs = function () {
             require(['jquery', 'createjs', 'tweenjs', 'preloadjs','soundjs'], function ($, createjs) {
 
-                var stage = new createjs.Stage("demoCanvas");
+                var demoCanvas = document.getElementById('demoCanvas');
+                demoCanvas.style.display='';
+                var stage = new createjs.Stage(demoCanvas);
                 var shape = new createjs.Shape();
 
                 createjs.Ticker.setFPS(60);
@@ -102,6 +106,15 @@ define(['angular'], function (angular) {
             });
         };
 
+        vm.loadUtility = function () {
 
+            require(['Utility'], function (Utility) {
+
+                //JavaScript原始值类型 Undefined Null Boolean String Number
+                console.log(new Date().valueOf());
+
+                console.log(new Date(new Date().valueOf()));
+            });
+        };
     }
 })
