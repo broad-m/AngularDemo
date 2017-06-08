@@ -41,6 +41,12 @@ define(['angular'], function (angular) {
 			})
 		}
 
+        require(['Mediator'], function (Mediator) {
+            Mediator.subscribe('nameChange', function (args) {
+                console.log(args, 'TreeController subscribe');
+            },10086);
+        });
+
 	}
 
 })

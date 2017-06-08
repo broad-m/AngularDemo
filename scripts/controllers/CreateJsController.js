@@ -1,7 +1,6 @@
 define(['angular'], function (angular) {
 
 
-
     angular
         .module('MainApp')
         .controller('CreateJsController', CreateJsController);
@@ -14,10 +13,10 @@ define(['angular'], function (angular) {
         var vm = this;
 
         vm.loadCreateJs = function () {
-            require(['jquery', 'createjs', 'tweenjs', 'preloadjs','soundjs'], function ($, createjs) {
+            require(['jquery', 'createjs', 'tweenjs', 'preloadjs', 'soundjs'], function ($, createjs) {
 
                 var demoCanvas = document.getElementById('demoCanvas');
-                demoCanvas.style.display='';
+                demoCanvas.style.display = '';
                 var stage = new createjs.Stage(demoCanvas);
                 var shape = new createjs.Shape();
 
@@ -71,37 +70,37 @@ define(['angular'], function (angular) {
 
                 //preload
                 /*setTimeout(function () {
-                    var preload = new createjs.LoadQueue();
-                    preload.addEventListener("fileload", handleFileComplete);
-                    preload.loadFile("images/1.jpg");
+                 var preload = new createjs.LoadQueue();
+                 preload.addEventListener("fileload", handleFileComplete);
+                 preload.loadFile("images/1.jpg");
 
-                    function handleFileComplete(event) {
-                        console.clear();
-                        console.log(event);
-                        document.getElementById('preloadContainer').appendChild(event.result);
+                 function handleFileComplete(event) {
+                 console.clear();
+                 console.log(event);
+                 document.getElementById('preloadContainer').appendChild(event.result);
 
-                    }
-                }, 500);*/
+                 }
+                 }, 500);*/
 
                 //Sound
                 /*setTimeout(function () {
-                    var soundID = "Thunder";
-                    createjs.Sound.on('fileload',loadHandler);
-                    createjs.Sound.registerSound("assets/111.m4a", soundID);
+                 var soundID = "Thunder";
+                 createjs.Sound.on('fileload',loadHandler);
+                 createjs.Sound.registerSound("assets/111.m4a", soundID);
 
 
-                    function loadHandler(event) {
-                        console.clear();
-                        console.log(event);
-                        // This is fired for each sound that is registered.
-                        var instance = createjs.Sound.play(soundID);  // play using id.  Could also use full sourcepath or event.src.
-                        instance.on("complete", function (event) {
+                 function loadHandler(event) {
+                 console.clear();
+                 console.log(event);
+                 // This is fired for each sound that is registered.
+                 var instance = createjs.Sound.play(soundID);  // play using id.  Could also use full sourcepath or event.src.
+                 instance.on("complete", function (event) {
 
-                            console.log(event);
-                        });
-                        instance.volume = 0.5;
-                    }
-                },600);*/
+                 console.log(event);
+                 });
+                 instance.volume = 0.5;
+                 }
+                 },600);*/
 
             });
         };
@@ -116,5 +115,23 @@ define(['angular'], function (angular) {
                 console.log(new Date(new Date().valueOf()));
             });
         };
+
+        vm.loadMediator = function () {
+            require(['Mediator'], function (Mediator) {
+                Mediator.subscribe('nameChange', function (args) {
+                    console.log(args, 'CreateJsController subscribe');
+                });
+            });
+
+
+            require(['Mediator'], function (Mediator) {
+                Mediator.publish('nameChange', {name: 'tom', time: +new Date()})
+            });
+        };
+
+
+
+
+
     }
 })
