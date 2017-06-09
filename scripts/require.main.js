@@ -5,11 +5,13 @@
     require.config({
         baseUrl: "./",
         paths: {
-            "jquery": ["lib/jquery/jquery.1.12.4.min"],
+            // "jquery": ["lib/jquery/jquery.1.12.4.min"],
+            "jquery": ["//cdn.bootcss.com/jquery/1.12.4/jquery"],
             "jquery.form": ["//cdn.bootcss.com/jquery.form/4.2.1/jquery.form.min"],
             'particleground':['lib/particleground/jquery.particleground.min'],
             'perfectScrollbar':['lib/perfect-scrollbar/js/perfect-scrollbar.min'],
-            "angular": ["lib/angular/angular.1.5.11.min"],
+            // "angular": ["lib/angular/angular.1.5.11.min"],
+            "angular": ["//cdn.bootcss.com/angular.js/1.5.11/angular.min"],
             "ngAnimate":["lib/angular/angular-animate.min"],
             "ngTouch":["lib/angular/angular-touch.min"],
             'me-pageloading':['lib/angular/me-pageloading/me-pageloading.min'],
@@ -26,7 +28,8 @@
             'preloadjs':['lib/createjs/preloadjs-0.6.2.min'],
             'soundjs':['lib/createjs/soundjs-0.6.2.min'],
             'Utility':['scripts/common/utility'],
-            'Mediator':['scripts/common/mediator']
+            'Mediator':['scripts/common/mediator'],
+            'Cache':['scripts/common/cache']
         },
         shim: {
             'jquery.form':['jquery'],

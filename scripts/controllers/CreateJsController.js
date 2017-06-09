@@ -129,8 +129,37 @@ define(['angular'], function (angular) {
             });
         };
 
+        vm.loadCache = function () {
 
 
+            require(['Cache'], function (Cache) {
+
+                var angularUrl = '//cdn.bootcss.com/angular.js/1.5.11/angular.min.js';
+                var jqueryUrl = '//cdn.bootcss.com/jquery/1.12.4/jquery.js';
+                var demoUrl = 'http://localhost:8088/AngularDemo/scripts/common/demo.js';
+
+                Cache.push('demo', 'js', demoUrl, '1.0');
+            });
+
+        };
+
+
+        // var re = /^[\w\s]*$/ig;
+        // var str = 'Angular is an JavaScript library';
+
+        var htmlRe = /^(?=.*\d)/;
+        var html = '<div><span \n  \t   \r id="sp_1"></span><img src="" alt=""></div>';
+
+
+        html = html.replace(/[\n\r]/g, '');
+
+        console.log(htmlRe.test(html));return
+
+
+        var result = null;
+        while ((result = htmlRe.exec(html)) !== null) {
+            console.log(result);
+        }
 
 
     }
