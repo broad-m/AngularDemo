@@ -17,11 +17,13 @@ define(['angular'], function (angular) {
         require(['jquery','jquery.form'], function ($) {
 
             $(function () {
-                var form = $('#jqueryFormDemo');
-                $('#submitBtn').click(function () {
-                    form.ajaxSubmit();
+                var form = $('.jqueryFormDemo');
+
+                form.submit(function () {
+                    $(this).ajaxSubmit();
                     return false;
-                });
+                })
+
 
 
             });

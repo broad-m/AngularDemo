@@ -31,6 +31,10 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 			{
 				name: 'clickToChangeColorDirective',
 				files: ['scripts/directives/clickToChangeColor.js']
+			},
+			{
+				name: 'bearNoteDirective',
+				files: ['scripts/directives/bearNote.directive.js']
 			}
 		];
 		var modules=[

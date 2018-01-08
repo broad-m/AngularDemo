@@ -1,0 +1,8 @@
+
+
+<div ng-repeat="item in contentList track by $index">
+    <span>name:{{item.name}}</span> | <span>time:{{item.time | date:'yyyy-MM-dd'}}</span>
+    | <span class="label label-default" ng-click="toUp($index,$event)" ng-hide="$index==0">上移</span>
+    | <span class="label label-default" ng-click="toDown($index,$event)" ng-hide="$index==contentList.length-1">下移</span>
+</div>
+<div class="btn btn-default" ng-click="fileUpload()">fileUpload</div>
