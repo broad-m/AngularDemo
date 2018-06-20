@@ -3,32 +3,29 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 	var app = angular.module('MainApp', ['ui.router', 'oc.lazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootstrap']);
 
 	app.constant('ocLazyLoadModules', (function () {
-		var controllers = [
-			{
-				name: 'AboutController',
-				files: ['scripts/controllers/AboutController.js']
-			}, {
-				name: 'ChartController',
-				files: ['scripts/controllers/ChartController.js']
-			}, {
-				name: 'MainController',
-				files: ['scripts/controllers/MainController.js']
-			}, {
-				name: 'MessageController',
-				files: ['scripts/controllers/MessageController.js']
-			}, {
-				name: 'ProfileController',
-				files: ['scripts/controllers/ProfileController.js']
-			}, {
-				name: 'TreeController',
-				files: ['scripts/controllers/TreeController.js']
-			}, {
-				name: 'CreateJsController',
-				files: ['scripts/controllers/CreateJsController.js']
-			}
-		];
-		var directives=[
-			{
+		var controllers = [{
+			name: 'AboutController',
+			files: ['scripts/controllers/AboutController.js']
+		}, {
+			name: 'ChartController',
+			files: ['scripts/controllers/ChartController.js']
+		}, {
+			name: 'MainController',
+			files: ['scripts/controllers/MainController.js']
+		}, {
+			name: 'MessageController',
+			files: ['scripts/controllers/MessageController.js']
+		}, {
+			name: 'ProfileController',
+			files: ['scripts/controllers/ProfileController.js']
+		}, {
+			name: 'TreeController',
+			files: ['scripts/controllers/TreeController.js']
+		}, {
+			name: 'CreateJsController',
+			files: ['scripts/controllers/CreateJsController.js']
+		}];
+		var directives = [{
 				name: 'clickToChangeColorDirective',
 				files: ['scripts/directives/clickToChangeColor.js']
 			},
@@ -37,8 +34,7 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 				files: ['scripts/directives/bearNote.directive.js']
 			}
 		];
-		var modules=[
-			{
+		var modules = [{
 				name: 'ui.bootstrap',
 				files: ['lib/angular/ui-bootstrap-tpls-2.5.0.min.js']
 			},
@@ -63,13 +59,11 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 				files: ['lib/chart.js/Chart.js']
 			}
 		];
-		var services = [
-			{
-				name: 'GenerateOutlineCatalogTree',
-				files: ['scripts/Services/GenerateOutlineCatalogTree.js']
-			}
-		];
-		return controllers.concat(directives,modules,services);
+		var services = [{
+			name: 'GenerateOutlineCatalogTree',
+			files: ['scripts/Services/GenerateOutlineCatalogTree.js']
+		}];
+		return controllers.concat(directives, modules, services);
 	}()));
 
 	app.run(['$rootScope', function ($rootScope) {
@@ -95,6 +89,7 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 	//Router Config
 	app.config(RouterConfig);
 	RouterConfig.$inject = ['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', 'ocLazyLoadModules'];
+
 	function RouterConfig($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, ocLazyLoadModules) {
 
 		$ocLazyLoadProvider.config({
@@ -106,7 +101,7 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 			.state("app", {
 				abstract: true,
 				url: "/app",
-				templateUrl: '/AngularDemo/views/app.html',
+				templateUrl: '/views/app.html',
 				controller: function ($scope) {
 					$scope.controllerName = 'AppController';
 					var vm = this;
@@ -116,7 +111,7 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 			})
 			.state("app.main", {
 				url: ".main",
-				templateUrl: "/AngularDemo/views/main.html",
+				templateUrl: "/views/main.html",
 				resolve: {
 					MainController: function ($ocLazyLoad) {
 						return $ocLazyLoad.load('MainController');
@@ -127,7 +122,7 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 			})
 			.state("app.profile", {
 				url: ".profile",
-				templateUrl: "/AngularDemo/views/profile.html",
+				templateUrl: "/views/profile.html",
 				resolve: {
 					ProfileController: function ($ocLazyLoad) {
 						return $ocLazyLoad.load('ProfileController');
@@ -140,7 +135,7 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 			})
 			.state("app.message", {
 				url: ".message",
-				templateUrl: "/AngularDemo/views/message.html",
+				templateUrl: "/views/message.html",
 				resolve: {
 					MessageController: function ($ocLazyLoad) {
 						return $ocLazyLoad.load('MessageController');
@@ -151,7 +146,7 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 			})
 			.state("app.about", {
 				url: ".about",
-				templateUrl: "/AngularDemo/views/about.html",
+				templateUrl: "/views/about.html",
 				resolve: {
 					AboutController: function ($ocLazyLoad) {
 						return $ocLazyLoad.load('AboutController');
@@ -162,7 +157,7 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 			})
 			.state("app.chart", {
 				url: ".chart",
-				templateUrl: "/AngularDemo/views/chart.html",
+				templateUrl: "/views/chart.html",
 				resolve: {
 					ChartController: function ($ocLazyLoad) {
 						return $ocLazyLoad.load('ChartController');
@@ -173,7 +168,7 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 			})
 			.state("app.tree", {
 				url: ".tree",
-				templateUrl: "/AngularDemo/views/tree.html",
+				templateUrl: "/views/tree.html",
 				resolve: {
 					TreeController: function ($ocLazyLoad) {
 						return $ocLazyLoad.load('TreeController');
@@ -184,9 +179,9 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 			})
 			.state("app.createJs", {
 				url: ".createJs",
-				templateUrl: "/AngularDemo/views/createJs.html",
+				templateUrl: "/views/createJs.html",
 				resolve: {
-                    VueController: function ($ocLazyLoad) {
+					VueController: function ($ocLazyLoad) {
 						return $ocLazyLoad.load('CreateJsController');
 					}
 				},
@@ -205,7 +200,3 @@ define(["angular", "ui.router", 'ocLazyLoad', 'ngAnimate', 'ngTouch', 'ui.bootst
 
 
 });
-
-
-
-
